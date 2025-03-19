@@ -7,7 +7,12 @@
                 "recurrence": {
                     "interval": 1,
                     "frequency": "Minute",
-                    "timeZone": "[INSERT_TIMEZONE_HERE]"
+                    "timeZone": "Central America Standard Time"
+                },
+                "evaluatedRecurrence": {
+                    "interval": 1,
+                    "frequency": "Minute",
+                    "timeZone": "Central America Standard Time"
                 },
                 "splitOn": "@triggerBody()",
                 "type": "ApiConnection",
@@ -18,10 +23,11 @@
                         }
                     },
                     "method": "get",
-                    "path": "/v2/datasets/@{encodeURIComponent(encodeURIComponent('[INSERT_STORAGE_NAME_HERE]'))}/triggers/batch/onupdatedfile",
+                    "path": "/v2/datasets/@{encodeURIComponent(encodeURIComponent('receiptsstorageopenhack'))}/triggers/batch/onupdatedfile",
                     "queries": {
-                        "folderId": "[INSERT_FOLDER_ID_HERE]",
-                        "maxFileCount": 10
+                        "folderId": "JTJmcmVjZWlwdHMtY29udGFpbmVy",
+                        "maxFileCount": 10,
+                        "checkBothCreatedAndModifiedDateTime": false
                     }
                 },
                 "conditions": [
@@ -51,6 +57,37 @@
                         "api-version": "2023-07-31"
                     }
                 }
+            },
+            "Create_blob_(V2)": {
+                "runAfter": {
+                    "Analyze_Document_for_Prebuilt_or_Custom_models_(v4.x_API)": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "ApiConnection",
+                "inputs": {
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['azureblob-1']['connectionId']"
+                        }
+                    },
+                    "method": "post",
+                    "body": "@body('Analyze_Document_for_Prebuilt_or_Custom_models_(v4.x_API)')",
+                    "headers": {
+                        "ReadFileMetadataFromServer": true
+                    },
+                    "path": "/v2/datasets/@{encodeURIComponent(encodeURIComponent('analyzedfileshackathon'))}/files",
+                    "queries": {
+                        "folderPath": "analyzedjson/",
+                        "name": "analyzed-invoice-@{triggerOutputs()?['body']['name']}.json",
+                        "queryParametersSingleEncoded": true
+                    }
+                },
+                "runtimeConfiguration": {
+                    "contentTransfer": {
+                        "transferMode": "Chunked"
+                    }
+                }
             }
         },
         "outputs": {},
@@ -60,5 +97,11 @@
                 "defaultValue": {}
             }
         }
-    }
+    },
+    "parameters": {
+            "$connections": {
+                "type": "Object",
+                "defaultValue": {}
+            }
+        }
 }
