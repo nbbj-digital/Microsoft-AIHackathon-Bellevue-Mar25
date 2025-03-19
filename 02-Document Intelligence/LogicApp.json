@@ -23,9 +23,9 @@
                         }
                     },
                     "method": "get",
-                    "path": "/v2/datasets/@{encodeURIComponent(encodeURIComponent('receiptsstorageopenhack'))}/triggers/batch/onupdatedfile",
+                    "path": "/v2/datasets/@{encodeURIComponent(encodeURIComponent('<<Your Storage Account Name>>'))}/triggers/batch/onupdatedfile",
                     "queries": {
-                        "folderId": "<<Your FolderID>>",
+                        "folderId": "<<Your  Incoming COntainer FolderID>>",
                         "maxFileCount": 10,
                         "checkBothCreatedAndModifiedDateTime": false
                     }
@@ -48,7 +48,7 @@
                         }
                     },
                     "method": "post",
-                    "body": "{\"urlSource\":\"https://<<Your Storage Account Name>>.blob.core.windows.net/<<Your Container Name>>/@{triggerOutputs()?['body']['name']}\"}",
+                    "body": "{\"urlSource\":\"https://<<Your Storage Account Name>>.blob.core.windows.net/<<Your Json Container Name>>/@{triggerOutputs()?['body']['name']}\"}",
                     "headers": {
                         "Content-Type": "application/json"
                     },
@@ -76,9 +76,9 @@
                     "headers": {
                         "ReadFileMetadataFromServer": true
                     },
-                    "path": "/v2/datasets/@{encodeURIComponent(encodeURIComponent('analyzedfileshackathon'))}/files",
+                    "path": "/v2/datasets/@{encodeURIComponent(encodeURIComponent('<<Your storage account name>>'))}/files",
                     "queries": {
-                        "folderPath": "analyzedjson/",
+                        "folderPath": "<<Your Json folder container name>>/",
                         "name": "analyzed-invoice-@{triggerOutputs()?['body']['name']}.json",
                         "queryParametersSingleEncoded": true
                     }
