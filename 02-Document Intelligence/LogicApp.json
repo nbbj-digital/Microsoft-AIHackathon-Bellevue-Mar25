@@ -25,7 +25,7 @@
                     "method": "get",
                     "path": "/v2/datasets/@{encodeURIComponent(encodeURIComponent('receiptsstorageopenhack'))}/triggers/batch/onupdatedfile",
                     "queries": {
-                        "folderId": "JTJmcmVjZWlwdHMtY29udGFpbmVy",
+                        "folderId": "<<Your FolderID>>",
                         "maxFileCount": 10,
                         "checkBothCreatedAndModifiedDateTime": false
                     }
@@ -48,7 +48,7 @@
                         }
                     },
                     "method": "post",
-                    "body": "{\"urlSource\":\"https://[INSERT_STORAGE_ACCOUNT_HERE].blob.core.windows.net/[INSERT_CONTAINER_NAME_HERE]/@{triggerOutputs()?['body']['name']}\"}",
+                    "body": "{\"urlSource\":\"https://<<Your Storage Account Name>>.blob.core.windows.net/<<Your Container Name>>/@{triggerOutputs()?['body']['name']}\"}",
                     "headers": {
                         "Content-Type": "application/json"
                     },
@@ -97,11 +97,5 @@
                 "defaultValue": {}
             }
         }
-    },
-    "parameters": {
-            "$connections": {
-                "type": "Object",
-                "defaultValue": {}
-            }
-        }
+    }
 }
