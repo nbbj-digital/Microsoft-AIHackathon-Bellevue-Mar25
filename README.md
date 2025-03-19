@@ -10,7 +10,7 @@ This repository serves as a **comprehensive blueprint** for organizing a **high-
 
 ## 🗺️ Solution Architecture
 
-![alt text](https://github.com/DavidArayaS/AI-Powered-Insights-Fraud-Detection-Hackathon/blob/7a77393255aa2071215c87b331e03830de696dd5/Architecture/Architecture.jpeg)
+![alt text](https://github.com/vishnu1411/Microsoft-AIHackathon-Bellevue-Mar25/blob/63e03eb52217c7e8cb99a7a344f794a401128bb4/Architecture/Architecture.jpeg)
 
 ---
 
@@ -51,7 +51,7 @@ Example:
 
 ## 🛠 **Prerequisites for Participants**  
 
-[Prerequisites](https://github.com/DavidArayaS/AI-Powered-Insights-Fraud-Detection-Hackathon/blob/6f26336b0d145da182411b279fd800837836efd2/Prerequisites.md)
+<<Already send to all participents>>
 ---
 
 ## 🌍 **How to Host Your Own AI Hackathon!**  
