@@ -14,8 +14,8 @@ This project demonstrates a multi-agent application that processes data from Azu
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/yourusername/multi-agent-app.git
-    cd multi-agent-app
+    git clone https://github.com/vishnu1411/Microsoft-AIHackathon-Bellevue-Mar25.git
+    cd '05-AI Multi Agent Chatbot\sample multi agent chat'
     ```
 
 2. Create a virtual environment and activate it:
