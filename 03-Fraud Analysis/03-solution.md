@@ -69,6 +69,8 @@ This guide will walk you through the entire process of extracting, transforming,
 
 7. **Publish** the tables, they should now be under Tables/ in your Lakehouse
 
+**TIP**:Alternatively, you can get the parquet file from the data source and use the steps in the following link to get the data into Fabric:
+[Create a Copy Job in Microsoft Fabric](https://learn.microsoft.com/en-us/fabric/data-factory/create-copy-job)
 ---
 
 ## 🚀 Step 4: Create a Semantic Model  
