@@ -36,6 +36,7 @@ Before starting, ensure you have:
 ✅ Learn how to use frameworks to programatically create AI agents and achive tailormade solutions for complex use cases with more flexiblity
 
 
+Milestones High Level :
 ### Milestone #1: **Create, Define, and Explore** LLMs + Resources
 1. **Create** your Resource Group, Key Vault, Azure Storage, Azure AI Service, and Azure AI Search.
 2. **Set up** an AI Foundry **Hub** and **Project**.
@@ -59,12 +60,6 @@ Before starting, ensure you have:
 2. **Combine** multiple CSVs into one local CSV (or manage them individually).
 3. **Use** `create_csv_agent` in Python to ask structured queries in plain English.
 4. **Achieve** more complex or SQL-like queries without memorizing syntax.
----
-# 📖 Solution to Challenge 04: Setting Up LLMs for a Chatbot and its Dependencies
-
-## 🔹 Objective
-In this challenge, you will:
-
 ---
 
 ## 🚀 Generic TIPS:
@@ -91,7 +86,6 @@ In this challenge, you will:
 
 ### 1️⃣ Create the Resource Group (RG)
 ### 2️⃣ Create/Use the existing Storage account (this will be source of our custom data)
-
 **TIP**: The source of your data can be Fabric or Data Lake Gen2 from the previous challenges, but that will involve some additional steps to fulfill and might require some extra efforts to set the same up.  
 Since we are time-bound, we will just use the Dimension Xls (which will be converted to csv/txt here) for the purpose of this challenge. If you were able to successfully finish the first 3 challenges, you already have 3 Dim xls files with you in Fabric Lakehouse and can convert the files to CSV (using a dataflow to transform, then a data copy pipeline to copy from Fabric to the new storage account) and upload them into the storage account we are going to create below.
 
@@ -102,18 +96,19 @@ Once the storage account is created, create a container `refined-data` and uploa
    - A **storage account** with a **container** inside
    - A **subfolder** in that container
    - All the files in CSV format inside that subfolder
+For ease of data transfer we have the same copied under the path "Data Sources/csv_data" you can just upload the folder to the container you just created 
+
 
 ### 3️⃣ Create the Key Vault
 ### 4️⃣ Create a Search Service Connection to Index the Sample Product Data
 ### 5️⃣ Create an Azure AI Service
 **Remarks**: By now, you have everything needed (Hub, Project) in **AI Foundry**.
 ### 6️⃣ Create a Hub
-### 7️⃣ Create a Project
+### 7️⃣ Create a Project once the Hub is completed 
+
 **Remarks**: This shouldn’t take more than 20 minutes. Once done, head to [https://ai.azure.com](https://ai.azure.com). Choose your project, and we’ll proceed inside that environment.
 
 **TIP**: With no organizational constraints, you can sign up at [https://ai.azure.com](https://ai.azure.com) and create the project directly. All other resources will be created automatically. You just need an AI search service resource.
-
----
 
 ### 8️⃣ Deploy Models
 
@@ -162,8 +157,6 @@ You need two models:
 
 ---
 You can test the model by opening the **playground** and chatting with it. Ask some generic questions, and you’ll get generic answers. At this point, the model is looking for data it was originally trained on and is **not yet grounded** in **your custom data**. However, we did manage to tailor the instructions and context to yield more specific responses.
-
----
 
 ---
 
@@ -243,9 +236,9 @@ You’ve trained the model with **your data**, giving domain-specific answers. N
 - **txt** format often yields better responses
 - **csv** might cause inconsistent answers
 
-**Milestone #4** will introduce an **AI agent** approach to tackle these inconsistencies.
+In the later Milestones we wil solve that problems.
 
-If you used **csv** data, consider **txt** for better results. You’ll also see it’s easy to get single-record details but harder to do **bulk** responses—this setup needs more advanced frameworks or custom solutions for bigger queries.
+> **TIP**: If you used **csv** data, consider **txt** for better results. You’ll also see it’s easy to get single-record details but harder to do **bulk** responses—this setup needs more advanced frameworks or custom solutions for bigger queries.
 
 ## 🚀 Milestone #2: Result
 
@@ -255,7 +248,6 @@ You can **Build & Customize** a Generative AI app with your **own custom data**.
 
 ---
 
----
 
 ## 🚀 Milestone #3: Build & Customize – Create, Iterate, and Debug Your Orchestration Flows
 
@@ -336,7 +328,7 @@ You can **Build & Customize** a Generative AI app with your **own custom data**.
 
 #### 3. Deploy the Flow
 
-**Congratulations!** You’ve trained the model with your own data and created a new prompt flow so users can chat iteratively while retaining history. The conversation context is included each time.
+**Congratulations!** You’ve trained the model with your own data and created a custom prompt flow so users can chat iteratively while retaining history. The conversation context and history is included each time.This is done via GUI with no-to-low code 
 
 ### Milestone #3: Result
 
@@ -360,12 +352,6 @@ You need a model capable of generating **natural language responses** from your 
 
 1. In the **Azure AI Foundry** portal, within your **Azure OpenAI** resource, go to **Deployments** → **Model deployments** → **Deploy base model**.
 2. Create a new deployment of `gpt-35-turbo-instruct` by selecting **Customize** after confirming:
-   - **Deployment name**: `gpt-35-turbo-instruct`
-   - **Deployment type**: Standard
-   - **Model version**: default
-   - **Resource location**: keep the default
-   - **Tokens per Minute**: slide to maximum
-   - **Enable dynamic quota**: optional
 3. **Test** your chatbot with a quick question like “What do you do?” to confirm it responds.
 
 Now we’ll move to our local environment so this OpenAI service can connect with our CSV data in a **human-readable** manner.
@@ -525,21 +511,5 @@ When you ask an LLM a question, it normally only relies on **static training dat
 3. **Generating** a more **accurate** and **domain-specific** answer.
 
 ---
-
-## How RAG Works in Azure AI Foundry
-
-1. **Upload and index** your data in Azure AI Search.
-2. **Enable** a vector-based or hybrid search index.
-3. **Create** or configure a prompt flow (multi-round chat, single question, or an agent approach).
-4. The flow:
-   1. Takes the user query (“How many clients do we have in Wayne Enterprises?”).
-   2. **Retrieves** relevant docs from your index (like partial CSV data).
-   3. **Concatenates** that data to the query.
-   4. **Calls** the LLM with the augmented prompt.
-   5. **Produces** an answer referencing your data.
-
----
-
 **Happy building and hacking!** 🚀
-
 ---
